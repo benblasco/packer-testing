@@ -1,0 +1,43 @@
+{
+  "builders": [{
+    "type": "azure-arm",
+
+    "client_id": "<CLIENT ID>",
+    "client_secret": "<SECRET, I'VE USED MY PASSWORD HERE SUCCESSFULLY",
+    "tenant_id": "<TENANT ID",
+    "subscription_id": "<SUBSCRIPTION ID",
+
+    "managed_image_resource_group_name": "<RESOURCE GROUP>",
+    "managed_image_name": "azure-rhel9-byos-packer",
+
+    "os_type": "Linux",
+    "image_publisher": "RedHat",
+    "image_offer": "rhel-byos",
+    "image_sku": "rhel-lvm94-gen2",
+    "plan_info": {
+        "plan_name": "rhel-lvm94-gen2",
+        "plan_product": "rhel-byos",
+        "plan_publisher": "redhat"
+    },
+
+    "azure_tags": {
+        "type": "Packer Build",
+        "dept": "Engineering",
+        "task": "Image deployment",
+        "owner": "Benjamin Blasco (Red Hat)"
+    },
+
+    "location": "Australia Southeast",
+    "vm_size": "Standard_DS1_v2"
+  }],
+  "provisioners": [{
+    "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'",
+    "inline": [
+      "dnf upgrade -y",
+
+      "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync"
+    ],
+    "inline_shebang": "/bin/sh -x",
+    "type": "shell"
+  }]
+}

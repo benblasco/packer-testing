@@ -1,0 +1,2 @@
+# Ignore JSON Packer files where we may have put secrets
+*.json
