@@ -71,3 +71,23 @@ Get info on a single VM (doesn't work for some reason)
 ```
 az vm show --resource-group <RESOURCE GROUP> --name "vm-azure-rhel9-byos"
 ```
+
+Get the licence type for all the instances:
+
+```
+az vm list --resource-group <RESOURCE GROUP> | grep -e '^    "name"\|"licenseType"'
+```
+
+Example output
+```
+    "licenseType": "RHEL_BYOS",
+    "name": "vm-rhel9-azure-byos",
+    "licenseType": null,
+    "name": "vm-rhel9-azure-byospacker",
+    "licenseType": null,
+    "name": "vm-rhel9-azure-payg",
+    "licenseType": null,
+    "name": "vm-rhel9-azure-paygpacker",
+    "licenseType": "RHEL_BYOS",
+    "name": "vm-rhel9-azure-paygtobyos",
+```
