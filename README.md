@@ -23,7 +23,9 @@ Will give you a web link to authorise your session, which works well for me.
 
 # Instructions for launching a VM
 
-### When built from a PAYG image
+### When launching from a PAYG image
+
+This works fine with the web console and the CLI. CLI obviously much quicker.
 
 Command to create the image from the CLI
 ```
@@ -36,7 +38,7 @@ az vm create \
    --image azure-rhel9-payg-packer
 ```
 
-### When built from a BYOS image
+### When launching from a BYOS image
 
 You have to include the plan details even though they were embedded in the Packer JSON file.
 If you try to create a VM from the web console it will fail with the error:
@@ -44,7 +46,6 @@ If you try to create a VM from the web console it will fail with the error:
   "code": "VMMarketplaceInvalidInput",
   "message": "Creating a virtual machine from Marketplace image or a custom image sourced from a Marketplace image requires Plan information in the request. VM: '/subscriptions/5b0e2156-1afe-49c8-a4b4-ceca0603a2e4/resourceGroups/openenv-gh5fv/providers/Microsoft.Compute/virtualMachines/bblasco-rhel9-azure-byospacker'."
 ```
-
 Command to create the image from the CLI
 ```
 az vm create \
