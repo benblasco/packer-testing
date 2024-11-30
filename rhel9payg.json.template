@@ -20,7 +20,7 @@
         "type": "Packer Build",
         "dept": "Engineering",
         "task": "Image deployment",
-        "owner": "Benjamin Blasco"
+        "owner": "<YOUR NAME HERE>"
     },
 
     "location": "Australia Southeast",

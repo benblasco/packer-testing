@@ -24,7 +24,7 @@
         "type": "Packer Build",
         "dept": "Engineering",
         "task": "Image deployment",
-        "owner": "Benjamin Blasco (Red Hat)"
+        "owner": "<YOUR NAME HERE>"
     },
 
     "location": "Australia Southeast",
