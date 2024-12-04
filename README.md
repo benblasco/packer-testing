@@ -77,6 +77,10 @@ az vm create \
    --plan-publisher redhat
 ```
 
+Info about the different "licence types" in Azure:
+- https://docs.microsoft.com/en-us/azure/virtual-machines/linux/azure-hybrid-benefit-linux
+
+
 More info:
 - https://learn.microsoft.com/en-us/azure/virtual-machines/workloads/redhat/byos
 - https://learn.microsoft.com/en-us/azure/virtual-machines/windows/cli-ps-findimage
@@ -115,4 +119,21 @@ Example output
     "name": "vm-rhel9-azure-paygpacker",
     "licenseType": "RHEL_BYOS",
     "name": "vm-rhel9-azure-paygtobyos",
+```
+
+# Instructions for tagging a VM as PAYG
+
+Instructions used as reference:
+- https://docs.microsoft.com/en-us/azure/virtual-machines/linux/azure-hybrid-benefit-linux
+
+Example commands and output:
+```
+$ az vm show -g openenv-gh5fv --name  bblasco-rhel9-azure-byostopayg  | grep license
+  "licenseType": "None",
+
+$ az vm update -g openenv-gh5fv --name bblasco-rhel9-azure-byostopayg --license-type RHEL_BASE
+<OUTPUT OMITTED>
+
+$ az vm show -g openenv-gh5fv --name  bblasco-rhel9-azure-byostopayg  | grep license
+  "licenseType": "RHEL_BASE",
 ```
